@@ -24,8 +24,13 @@ function calculateEquation(event) {
     const serumCystatinC = parseFloat(scysInput.value);
 
     // Kiểm tra input hợp lệ
-    if (isNaN(serumCreatinine) || isNaN(serumCystatinC) || isNaN(age)) {
+    if (isNaN(patientSex) || isNaN(age) || isNaN(serumCreatinine) || isNaN(serumCystatinC)) {
         alert('Please enter valid numerical values for all inputs.');
+        return;
+    }
+
+    if (serumCreatinine <= 0 || serumCystatinC <= 0 || age <= 0) {
+        alert('Inputs must be positive numbers.');
         return;
     }
 
@@ -34,13 +39,17 @@ function calculateEquation(event) {
     try {
         eGFR = equation(patientSex, age, serumCreatinine, serumCystatinC);
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error in calculation:', error);
         alert('An error occurred during calculation.');
         return;
     }
 
     // Hiển thị kết quả
     const eGFRResult = document.getElementById('eGFRResult');
+    if (eGFR < 15 || eGFR > 200) {
+        alert('eGFR value is out of the expected range. Please verify the inputs.');
+    }
+
     eGFRResult.textContent = `${eGFR.toFixed(2)} mL/min/1.73m²`;
 }
 
