@@ -13,17 +13,17 @@ function calculateEquation(event) {
     const patientSex = parseInt(document.getElementById('patientSex').value);
     const age = parseInt(document.getElementById('age').value);
     const serumCreatinine = parseFloat(scrInput.value);
-    const scylleCreatinine = parseFloat(scysInput.value);
+    const serumCystatinC = parseFloat(scysInput.value);
 
     // Input validation and calculations
     let eGFR;
-    if (isNaN(serumCreatinine) || isNaN(scylleCreatinine)) {
-        alert('Please enter valid numerical values for serum creatinine and scylle creatinine.');
+    if (isNaN(serumCreatinine) || isNaN(serumCystatinC)) {
+        alert('Please enter valid numerical values for serum creatinine and serum Cystatin C.');
         return;
     }
 
     try {
-        eGFR = equation(serumCreatinine, scylleCreatinine);
+        eGFR = equation(serumCreatinine, serumCystatinC);
     } catch (error) {
         console.error('Error:', error);
         alert('An error occurred during calculation.');
@@ -35,7 +35,7 @@ function calculateEquation(event) {
     
     if (isNaN(eGFR)) {
         resultsContainer.innerHTML = '<p>Invalid input. Please enter numerical values.</p>';
-        alert('Please enter valid numerical values for serum creatinine and scylle creatinine.');
+        alert('Please enter valid numerical values for serum creatinine and serum Cystatin C.');
         return;
     }
 
@@ -58,7 +58,7 @@ function calculateEquation(event) {
                 <span style="color: #666;">High eGFR (above 120) may indicate a well-functioning kidney, but it also raises the risk of chronic kidney disease and end-stage renal failure if not properly managed.</span>
             </div>
             <div class="note-item">
-                <span style="color: #666;">eGFR below 60 mL/min/1.73m² indicates reduced kidney function and may suggest the need for dialysis or further medical evaluation.</span>
+                <span style="color: #666;">eGFR below 60 mL/min/1.73m² indicates reduced kidney function and may suggest the need for further medical evaluation.</span>
             </div>
         </div>
     `;
