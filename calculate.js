@@ -3,8 +3,14 @@ const scrInput = document.getElementById('serumCreatinine');
 const scysInput = document.getElementById('serumCystatinC');
 
 // Công thức tính eGFR
-const equation = function (scr, scys) {
-    return (0.8 * scr * scys) / 156;
+const equation = function (sex, age, scr, scys) {
+    return (
+        100.430 *
+        Math.pow(1.080, sex) *
+        Math.pow(age, -0.097) *
+        Math.pow(scr, -0.524) *
+        Math.pow(scys, -0.435)
+    );
 };
 
 // Hàm xử lý khi submit form
@@ -18,15 +24,15 @@ function calculateEquation(event) {
     const serumCystatinC = parseFloat(scysInput.value);
 
     // Kiểm tra input hợp lệ
-    if (isNaN(serumCreatinine) || isNaN(serumCystatinC)) {
-        alert('Please enter valid numerical values for serum creatinine and serum Cystatin C.');
+    if (isNaN(serumCreatinine) || isNaN(serumCystatinC) || isNaN(age)) {
+        alert('Please enter valid numerical values for all inputs.');
         return;
     }
 
     // Tính toán eGFR
     let eGFR;
     try {
-        eGFR = equation(serumCreatinine, serumCystatinC);
+        eGFR = equation(patientSex, age, serumCreatinine, serumCystatinC);
     } catch (error) {
         console.error('Error:', error);
         alert('An error occurred during calculation.');
