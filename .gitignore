@@ -1,0 +1,10 @@
+.github/workflows/step4 Calvinator jobname/.env
+.github/plain-repos
+.coverage
+.env
+install cache
+package.json
+/**
+ * (do not include files that are part of the project's essential functionality)
+ */
+*.md *.txt *.pdf *.doc *.docx *
