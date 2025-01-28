@@ -32,10 +32,30 @@ function calculateEquation(event) {
 
     // Display result
     const resultsContainer = document.getElementById('resultsContainer');
+
+function calculateEquation(event) {
+    // Input validation and calculations...
+    let eGFR;
+    
+    if (isNaN(serumCreatinine) || isNaN(cystatinC)) {
+        alert('Please enter valid numerical values for serum creatinine and cystatin C.');
+        return;
+    }
+
+    try {
+        eGFR = equation(serumCreatinine, cystatinC);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred during calculation.');
+        return;
+    }
+
+    // Display result
+    const resultsContainer = document.getElementById('resultsContainer');
     
     if (isNaN(eGFR)) {
         resultsContainer.innerHTML = '<p>Invalid input. Please enter numerical values.</p>';
-        alert('Please enter valid numerical values for serum creatinine and serum Cystatin C.');
+        alert('Please enter valid numerical values for serum creatinine and cystatin C.');
         return;
     }
 
@@ -43,33 +63,11 @@ function calculateEquation(event) {
     const eGFRResult = document.getElementById('eGFRResult');
     eGFRResult.textContent = `Estimated Glomerular Filtration Rate (eGFR): ${Math.round(eGFR.toFixed(1))} mL/min/1.73m²`;
 
-    // Normal Range
+    // Update notes dynamically
     resultsContainer.innerHTML += `
         <div class="normal-range">
-            For Males: <span style="color: #333;">80 - 123</span> mL/min/1.73m²<br>
-            For Females: <span style="color: #333;">85 - 127</span> mL/min/1.73m²
-        </div>
-    `;
-
-    // Notes
-    resultsContainer.innerHTML += `
-        <div class="note-list">
-            <div class="note-item">
-                <span style="color: #666;">High eGFR (above 120) may indicate a well-functioning kidney, but it also raises the risk of chronic kidney disease and end-stage renal failure if not properly managed.</span>
-            </div>
-            <div class="note-item">
-                <span style="color: #666;">eGFR below 60 mL/min/1.73m² indicates reduced kidney function and may suggest the need for further medical evaluation.</span>
-            </div>
-        </div>
-    `;
-
-    // Clear previous result
-    resultsContainer.innerHTML = `
-        <h2 style="margin-top: 40px;">Results</h2>
-        <p>${eGFR.toFixed(1)} mL/min/1.73m²</p>
-        <div class="normal-range">
-            For Males: 80 - 123<br>
-            For Females: 85 - 127
+            For Males: <span style="color: #333;">80 - 123</span><br>
+            For Females: <span style="color: #333;">85 - 127</span>
         </div>
         <div class="note-list">
             <div class="note-item">
