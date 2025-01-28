@@ -7,69 +7,50 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Container div to center the calculator -->
     <div class="calculator-container">
-        <h1 style="text-align: center; color: #333; margin-bottom: 20px;">Estimated Glomerular Filtration Rate (eGFR) Calculator</h1>
-        
+        <h1>eGFR Calculator</h1>
         <form id="calculatorForm" onsubmit="calculateEquation(event)">
-            <!-- Patient Information Section -->
+            <!-- Patient's Sex -->
             <div class="input-group">
-                <label for="patientSex">Patient's Sex (<i>0 = Female, 1 = Male</i>)</label>
-                <input type="number" id="patientSex" min="0" max="1" value="0" placeholder="Enter sex" step="1">
+                <label for="patientSex">Patient's Sex (0 = Female, 1 = Male)</label>
+                <input type="number" id="patientSex" min="0" max="1" value="0" required>
             </div>
 
+            <!-- Patient's Age -->
             <div class="input-group">
-                <label for="age">Age in years (≥ 18)</label>
-                <input type="number" id="age" min="0" value="25" placeholder="Enter age" step="1">
+                <label for="age">Age (years, ≥ 18)</label>
+                <input type="number" id="age" min="18" value="25" required>
             </div>
 
+            <!-- Serum Creatinine -->
             <div class="input-group">
                 <label for="serumCreatinine">Serum Creatinine (mg/dL)</label>
-                <input type="number" id="serumCreatinine" min="0.00" value="1.10" placeholder="Enter Scr" step="0.01">
+                <input type="number" id="serumCreatinine" step="0.01" value="1.10" required>
             </div>
 
+            <!-- Serum Cystatin C -->
             <div class="input-group">
                 <label for="serumCystatinC">Serum Cystatin C (mg/dL)</label>
-                <input type="number" id="serumCystatinC" min="0.00" value="1.10" placeholder="Enter Scys" step="0.01">
+                <input type="number" id="serumCystatinC" step="0.01" value="1.10" required>
             </div>
 
             <!-- Calculate Button -->
-            <button type="submit">Calculate EGF</button>
+            <button type="submit">Calculate eGFR</button>
         </form>
 
-        <!-- Result Display Section -->
-        <div id="resultsContainer">
-            <h2 style="text-align: center; margin-top: 30px; color: #333;">Results</h2>
-            
-            <!-- Normal Range -->
-            <div style="padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
-                <strong>Normal Range:</strong><br>
-                For Males: <span style="color: #333;">80 - 123 mL/min/1.73m²</span><br>
-                For Females: <span style="color: #333;">85 - 127 mL/min/1.73m²</span>
-            </div>
-
-            <!-- Result Display -->
-            <div style="padding: 20px; border-radius: 4px;">
-                <h3 style="text-align: left; margin-top: 20px;">Estimated Glomerular Filtration Rate (eGFR):</h3>
-                <p id="eGFRResult">Calculating...</p>
-            </div>
-
-            <!-- Important Notes -->
-            <div style="padding: 15px; background-color: #f8f9fa; border-radius: 4px; margin-top: 20px;">
-                <strong>Important Notes:</strong><br>
-                <ul>
-                    <li>High eGFR may indicate a well-functioning kidney.</li>
-                    <li>Discuss specific results with your healthcare provider for personalized advice.</li>
-                </ul>
-            </div>
-
-            <!-- Form Submission -->
-            <p style="text-align: center; margin-top: 20px;">After entering all patient data, click the "Calculate EGF" button to get your result. Make sure to enter numerical values and avoid any non-numeric characters.</p>
+        <!-- Results Section -->
+        <div id="resultsContainer" class="results-container">
+            <h2>Results</h2>
+            <p><strong>Normal Range:</strong></p>
+            <ul>
+                <li>Males: 80 - 123 mL/min/1.73m²</li>
+                <li>Females: 85 - 127 mL/min/1.73m²</li>
+            </ul>
+            <p id="eGFRResult">Your result will appear here.</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer style="text-align: center; margin-top: 30px; color: #666;">
+    <footer>
         <p>&copy; 2024 eGFR Calculator. All rights reserved.</p>
     </footer>
 
