@@ -5,10 +5,18 @@
     box-sizing: border-box;
 }
 
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
 /* Header styles */
 h1, h2, h3 {
     color: #333;
-    font-family: Arial, sans-serif;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -18,82 +26,116 @@ h1, h2, h3 {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Input group styling */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
-.form-label {
+.input-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
-    color: #666;
+    color: #555;
 }
 
-.form-input {
+.input-group input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 16px;
 }
 
-.form-input:focus {
+.input-group input:focus {
     outline: none;
     border-color: #4CAF50;
-    box-shadow: 0 0 0 2px rgba(76,175,80,0.3);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
 }
 
+/* Button styling */
 button {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #45a049;
 }
 
+/* Results container */
 #resultsContainer {
-    margin-top: 50px; /* Adjust this based on your specific setup */
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #eGFRResult {
     font-size: 24px;
     font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+    text-align: center;
 }
 
-ormal-range {
+.normal-range {
     font-style: italic;
     color: #666;
-}
-
-.note-item {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 15px;
+    text-align: center;
+    margin-top: 15px;
 }
 
 .note-list {
-    list-style-type: none;
+    margin-top: 20px;
     padding: 0;
+    list-style: none;
+}
+
+.note-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+
+.note-item:last-child {
+    border-bottom: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 15px;
+    }
+    
+    h1, h2 {
+        font-size: 1.8rem;
+    }
 }
 
 @media (max-width: 480px) {
     .calculator-container {
-        margin: 5px;
+        margin: 10px;
     }
     
-    h2 {
+    h1 {
         font-size: 1.5rem;
+    }
+    
+    button {
+        font-size: 14px;
+        padding: 10px;
     }
 }
